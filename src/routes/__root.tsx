@@ -82,6 +82,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Lapak Rongsokan Denpasar Utara" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { property: "og:title", content: "Lapak Rongsokan Denpasar Utara" },
+      { name: "twitter:title", content: "Lapak Rongsokan Denpasar Utara" },
+      { property: "og:description", content: "Pengepul rongsok Bali. Besi tua, kardus, plastik, elektronik. Jemput lokasi." },
+      { name: "twitter:description", content: "Pengepul rongsok Bali. Besi tua, kardus, plastik, elektronik. Jemput lokasi." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/dada2bd8-2b96-483e-aa0d-a13f8679b8b2/id-preview-2eeb693f--365e1bd3-75b7-4914-808d-4b57f98b50b8.lovable.app-1780295751744.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/dada2bd8-2b96-483e-aa0d-a13f8679b8b2/id-preview-2eeb693f--365e1bd3-75b7-4914-808d-4b57f98b50b8.lovable.app-1780295751744.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
