@@ -1,5 +1,5 @@
-import { MessageCircle } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/contact";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 export function WhatsAppFloat() {
   return (
@@ -12,7 +12,7 @@ export function WhatsAppFloat() {
     >
       <span className="relative flex h-6 w-6 items-center justify-center">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-40" />
-        <MessageCircle className="relative h-6 w-6" fill="currentColor" />
+        <WhatsAppIcon className="relative h-6 w-6" />
       </span>
       <span className="hidden font-semibold sm:inline">Chat WhatsApp</span>
     </a>

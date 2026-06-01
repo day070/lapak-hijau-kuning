@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  MessageCircle,
   Truck,
   Scale,
   BadgeCheck,
@@ -13,7 +12,12 @@ import {
   Cpu,
   Boxes,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import heroImg from "@/assets/hero-rongsokan.jpg";
+import imgElektronik from "@/assets/elektronik.jpeg";
+import imgKardus from "@/assets/kardus.jpeg"
+import imgPlastik from "@/assets/plastik.jpeg"
+import imgBesi from "@/assets/besi.jpeg"
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
@@ -70,10 +74,10 @@ export const Route = createFileRoute("/")({
 });
 
 const services = [
-  { icon: Boxes, title: "Besi Tua", desc: "Plat, pipa, kawat, rongsok logam" },
-  { icon: Package, title: "Kardus", desc: "Karton bekas semua ukuran" },
-  { icon: Recycle, title: "Plastik", desc: "Botol, ember, aneka plastik" },
-  { icon: Cpu, title: "Elektronik Bekas", desc: "TV, kulkas, kabel, dll" },
+  { image: Boxes, title: "Besi Tua", desc: "Plat, pipa, kawat, rongsok logam", photo: imgBesi },
+  { image: Package, title: "Kardus", desc: "Karton bekas semua ukuran", photo: imgKardus },
+  { image: Recycle, title: "Plastik", desc: "Botol, ember, aneka plastik", photo: imgPlastik },
+  { image: Cpu, title: "Elektronik Bekas", desc: "TV, kulkas, kabel, dll", photo: imgElektronik },
 ];
 
 const advantages = [
@@ -128,7 +132,7 @@ function Landing() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-whatsapp px-4 py-2 text-sm font-semibold text-whatsapp-foreground shadow-sm transition hover:opacity-90"
           >
-            <MessageCircle className="h-4 w-4" fill="currentColor" />
+            <WhatsAppIcon className="h-4 w-4" />
             <span className="hidden sm:inline">WhatsApp</span>
             <span className="sm:hidden">Chat</span>
           </a>
@@ -160,7 +164,7 @@ function Landing() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp px-7 py-4 text-base font-bold text-whatsapp-foreground shadow-[var(--shadow-soft)] transition hover:scale-[1.02] hover:shadow-xl"
               >
-                <MessageCircle className="h-5 w-5" fill="currentColor" />
+                <WhatsAppIcon className="h-5 w-5" />
                 Chat WhatsApp Sekarang
               </a>
               <a
@@ -198,20 +202,33 @@ function Landing() {
       {/* LAYANAN */}
       <section id="layanan" className="mx-auto max-w-6xl px-4 py-16">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold sm:text-4xl">Apa Saja yang Kami Terima?</h2>
+          <span className="text-sm font-semibold uppercase tracking-wider text-primary">Layanan Kami</span>
+          <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl">Apa Saja yang Kami Terima?</h2>
           <p className="mt-3 text-muted-foreground">Semua jenis rongsokan rumah tangga & usaha kami terima.</p>
         </div>
         <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-4">
-          {services.map(({ icon: Icon, title, desc }) => (
+          {services.map(({ image: Icon, title, desc, photo }) => (
             <div
               key={title}
-              className="group rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-[var(--shadow-soft)]"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]"
             >
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
-                <Icon className="h-6 w-6" />
+              {/* photo */}
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={photo}
+                  alt={title}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
               </div>
-              <h3 className="mt-4 text-lg font-bold">{title}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
+              {/* overlay badge */}
+              <div className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-primary/90 px-2.5 py-1 text-xs font-bold text-primary-foreground shadow">
+                <Icon className="h-3.5 w-3.5" />
+                {title}
+              </div>
+              {/* desc */}
+              <div className="p-4">
+                <p className="text-sm text-muted-foreground">{desc}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -311,17 +328,19 @@ function Landing() {
           <p className="mx-auto mt-4 max-w-xl text-base opacity-90 sm:text-lg">
             Chat dulu, cek harga gratis, tim kami langsung meluncur ke lokasi Anda.
           </p>
+          <div className="flex gap-5 items-center justify-center">
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-3 rounded-full bg-whatsapp px-8 py-5 text-lg font-extrabold text-whatsapp-foreground shadow-xl transition hover:scale-105"
+            className="mt-8 inline-flex items-center gap-3 rounded-full bg-whatsapp px-8 py-3 text-lg font-extrabold text-whatsapp-foreground shadow-xl transition hover:scale-105"
           >
-            <MessageCircle className="h-6 w-6" fill="currentColor" />
+            <WhatsAppIcon className="h-6 w-6" />
             Chat WhatsApp Sekarang
           </a>
-          <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold opacity-80">
+          <div className="mt-8 inline-flex items-center gap-2 text-sm font-semibold opacity-80">
             <Phone className="h-4 w-4" /> {WHATSAPP_DISPLAY}
+          </div>
           </div>
         </div>
       </section>
@@ -344,7 +363,7 @@ function Landing() {
             <h3 className="text-sm font-bold uppercase tracking-wider text-foreground">Kontak</h3>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
-                <MessageCircle className="h-4 w-4 text-primary" />
+                <WhatsAppIcon className="h-4 w-4 text-primary" />
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary">
                   WhatsApp: {WHATSAPP_DISPLAY}
                 </a>
@@ -357,8 +376,7 @@ function Landing() {
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider text-foreground">Jam Operasional</h3>
             <ul className="mt-3 space-y-1 text-sm text-muted-foreground">
-              <li>Senin – Sabtu: 08.00 – 18.00</li>
-              <li>Minggu: by appointment</li>
+              <li>Senin – Miggu: 08.00 – 18.00</li>
             </ul>
           </div>
         </div>
